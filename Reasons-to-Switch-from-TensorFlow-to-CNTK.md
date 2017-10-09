@@ -21,7 +21,7 @@ date:	2017-10-09
 
 ## 原因1：速度
 
-深度学习是数据密集型和计算密集型的任务，无论是构建产品还是撰写论文，速度都是关键。在学习和评估的速度方面，CNTK具有优于TensorFlow的优势。香港浸会大学（ http://dlbench.comp.hkbu.edu.hk/ ）研究人员的论文（ https://arxiv.org/pdf/1608.07249.pdf ）显示，在他们测试的所有网络中，CNTK的性能都比TensorFlow好，无论是CPU还是GPU。事实上，在GPU上，CNTK比其他所有的工具都要快。
+深度学习是数据密集型和计算密集型的任务，无论是构建产品还是撰写论文，速度都是关键。在学习和评估的速度方面，CNTK具有优于TensorFlow的优势。[香港浸会大学](http://dlbench.comp.hkbu.edu.hk/)研究人员的[论文](https://arxiv.org/pdf/1608.07249.pdf)显示，在他们测试的所有网络中，CNTK的性能都比TensorFlow好，无论是CPU还是GPU。事实上，在GPU上，CNTK比其他所有的工具都要快。
 
 对于图像相关的任务，CNTK通常比TensorFlow快2到3倍。而对于循环神经网络（RNN），CNTK是无可争议的赢家。如上述文章所述，当在CPU上运行时，“CNTK比Torch和TensorFlow获得更好的性能（高达5-10倍）”。而在GPU上，“CNTK多次超越所有其他工具”。这个速度优势不是偶然的，微软研究院在CNTK的序列处理方面做了大量的优化。
 
@@ -31,9 +31,9 @@ date:	2017-10-09
 
 深度学习工具包很难开发，因为即使工具包中存在Bug，您也可以通过设计网络架构来实现合理的准确性。许多其他工具包的示例代码与论文的原始实现几乎相同，然后提供一个与训练的模型供人们下载和使用，这在我们看来是非常不负责任的。在CNTK中，我们非常注意错误跟踪，并确保该工具包可以用于从头开始训练模型，并获得最高的准确性。
 
-最初由Google研究人员开发的Inception V3网络（ https://arxiv.org/abs/1512.00567 ）便是一个例子。 TensorFlow共享了Inception V3的训练脚本，并提供训练好的模型进行下载。然而，难以重新训练模型并达到相同的准确性，因为这需要对诸如数据预处理和增强之类的细节的额外理解。原论文的第三方报告（在Keras上）所达到的最佳准确度大约为0.6％。 经过CNTK团队的努力研究，CNTK已经能够训练一个top5错误为5.972％的Inception V3模型，甚至比原论文更好！训练脚本以示例的方式（ https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/GoogLeNet ）共享，您可以自己验证。
+最初由Google研究人员开发的[Inception V3网络](https://arxiv.org/abs/1512.00567)便是一个例子。 TensorFlow共享了Inception V3的训练脚本，并提供训练好的模型进行下载。然而，难以重新训练模型并达到相同的准确性，因为这需要对诸如数据预处理和增强之类的细节的额外理解。原论文的第三方报告（在Keras上）所达到的最佳准确度大约为0.6％。 经过CNTK团队的努力研究，CNTK已经能够训练一个top5错误为5.972％的Inception V3模型，甚至比原论文更好！训练脚本以示例的方式[共享](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/GoogLeNet)，您可以自己验证。
 
-对于循环神经网络，CNTK的自动批处理算法可以包装不同长度的序列并拥有很高的执行效率。更重要的是，它能够更好地随机初始化训练数据，与对原始数据的封包相比，通常可以提高1-2％的准确性。这使得微软研究院的语音小组在语音识别中获得更人性化的结果（ https://arxiv.org/pdf/1610.05256.pdf ）。
+对于循环神经网络，CNTK的自动批处理算法可以包装不同长度的序列并拥有很高的执行效率。更重要的是，它能够更好地随机初始化训练数据，与对原始数据的封包相比，通常可以提高1-2％的准确性。这使得微软研究院的语音小组在语音识别中获得更人性化的[结果](https://arxiv.org/pdf/1610.05256.pdf)。
 
 ## Reason 3: API design
 TensorFlow was originally designed to have a small C++ core API, and most of its functionality is implemented in Python. This certainly has advantages, since Python is much easier to write and faster to update. The downside, however, is multiple. We already mentioned its lower speed. In addition, for many real-world applications, it is not always possible to embed Python code if the application itself is written in C++ and has tough restrictions in running time. In TensorFlow 1.0, an extensive C++ API has been released, although it remains to be somewhat slow in performance.

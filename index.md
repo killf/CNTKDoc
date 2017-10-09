@@ -4,26 +4,26 @@ author:    killf
 date:	2017-10-09
 ---
 
-# The Microsoft Cognitive Toolkit
+# 微软认知工具箱
 
-The Microsoft Cognitive Toolkit - CNTK - is a unified deep-learning toolkit by Microsoft. [This video](https://youtu.be/9gDDO5ldT-4) provides a high-level overview of the toolkit.
+微软认知工具箱 - CNTK - 是Microsoft统一的深入学习工具包。 [本视频](https://youtu.be/9gDDO5ldT-4) 提供了该工具包的高级概述。
 
-The latest release of the Microsoft Cognitive Toolkit is [2.2](./ReleaseNotes/CNTK_2_2_Release_Notes.md).
+CNTK的最新版本是[2.2](https://docs.microsoft.com/en-us/cognitive-toolkit/releasenotes/cntk_2_2_release_notes).
 
-CNTK can be included as a library in your Python, C#, or C++ programs, or used as a standalone machine learning tool through its own model description language (BrainScript). In addition you can use the CNTK model evaluation functionality from your Java program.
+您可以在Python、C＃或C++程序中以引用类库的方式使用CNTK，也可以通过它自己的模型描述语言（BrainScript）作为独立的机器学习工具。另外，您还可以在Java程序中的使用CNTK的模型评估功能。
 
-CNTK supports 64-bit Linux or 64-bit Windows operating systems. To install you can either choose pre-compiled binary packages, or compile the toolkit from the source provided in GitHub.
+CNTK支持64位Linux或64位Windows操作系统。 要安装CNTK，您可以选择预编译的二进制包，也可以从GitHub提供的源代码自行编译安装。
 
-Here are a few pages to get started:
-* [Reasons to switch from TensorFlow to CNTK](./Reasons-to-Switch-from-TensorFlow-to-CNTK.md)
-* [Setting up CNTK on your machine](./Setup-CNTK-on-your-machine.md)
-* [Tutorials](./Tutorials.md), [Examples](./Examples.md), [Tutorials on Azure](https://notebooks.azure.com/cntk/libraries/tutorials)
-* [The CNTK Library APIs](./CNTK-Library-API.md)
-  * [Using CNTK from Python](https://cntk.ai/pythondocs)
-    * [CNTK with Keras](./Using-CNTK-with-Keras.md)
-  * [Using CNTK from C#](./Using-CNTK-with-CSharp.md) 
-  * [Using CNTK from C++](./CNTK-Library-API.md#c-api)
-* CNTK using [BrainScript](./Using-CNTK-with-BrainScript.md)
-* [CNTK Model Evaluation](./CNTK-Evaluation-Overview.md)
-* [How to contribute to CNTK](./Contributing-to-CNTK.md)
-* Give us feedback through these [channels](Feedback-Channels.md)
+开始使用CNTK:
+* [为什么要从TensorFlow迁移到CNTK](./Reasons-to-Switch-from-TensorFlow-to-CNTK.md)
+* [安装CNTK](./Setup-CNTK-on-your-machine.md)
+* [教程](./Tutorials.md), [例子](./Examples.md), [Azure上的教程](https://notebooks.azure.com/cntk/libraries/tutorials)
+* [CNTK APIs](./CNTK-Library-API.md)
+  * [在Python中使用CNTK](https://cntk.ai/pythondocs)
+    * [在Keras中使用CNTK](./Using-CNTK-with-Keras.md)
+  * [在C#中使用CNTK](./Using-CNTK-with-CSharp.md) 
+  * [在C++中使用CNTK](./CNTK-Library-API.md#c-api)
+* [BrainScript语言](./Using-CNTK-with-BrainScript.md)
+* [模型评估](./CNTK-Evaluation-Overview.md)
+* [贡献代码](./Contributing-to-CNTK.md)
+* [反馈](./Feedback-Channels.md)

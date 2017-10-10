@@ -1,9 +1,3 @@
----
-title:   微软认知工具包
-author:    killf
-date:	2017-10-09
----
-
 # 微软认知工具包
 
 微软认知工具包（CNTK）是Microsoft统一的深度学习工具包。 [本视频](https://youtu.be/9gDDO5ldT-4) 详细的介绍了该工具包。

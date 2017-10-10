@@ -1,8 +1,3 @@
----
-title:   为什么要从TensorFlow迁移到CNTK
-author:    killf
-date:	2017-10-09
----
 # 为什么要从TensorFlow迁移到CNTK
 
 深度学习在过去的几年里彻底改变了人工智能（AI）领域。微软的愿景是希望所有人都能够使用智能，而不仅仅是几家精英公司，为此开发了Microsoft Cognitive Toolkit（CNTK，微软认知工具箱）。这是一款免费的、可供任何人使用的、开源的深度学习工具包，它现在是GitHub上第三大热门的机器学习工具包，仅位于TensorFlow和Caffe之后（在MxNet、Theano、Torch等之前）。
@@ -35,17 +30,18 @@ date:	2017-10-09
 
 对于循环神经网络，CNTK的自动批处理算法可以包装不同长度的序列并拥有很高的执行效率。更重要的是，它能够更好地随机初始化训练数据，与对原始数据的封包相比，通常可以提高1-2％的准确性。这使得微软研究院的语音小组在语音识别中获得更人性化的[结果](https://arxiv.org/pdf/1610.05256.pdf)。
 
-## Reason 3: API design
-TensorFlow was originally designed to have a small C++ core API, and most of its functionality is implemented in Python. This certainly has advantages, since Python is much easier to write and faster to update. The downside, however, is multiple. We already mentioned its lower speed. In addition, for many real-world applications, it is not always possible to embed Python code if the application itself is written in C++ and has tough restrictions in running time. In TensorFlow 1.0, an extensive C++ API has been released, although it remains to be somewhat slow in performance.
+## 原因3：API设计
+TensorFlow最初只包含一个微型的C++核心API，其大部分功能都是由Python实现的。这样设计的优势显而易见，Python易于使用而且更新很快。任何事情都是两面性的，就像我们上面提到的，它的速度很慢。另外，对于大多数的真实应用，比如C++编写的、对运行时间有严格要求，都很难嵌入Python代码。在TensorFlow 1.0中，C++ API变得更为广泛，尽管它的速度依然很慢。
 
-We envision from the very beginning that not only the evaluation of deep learning models would be an essential part of applications. The model training part can also be closely integrated into intelligent applications such as Office or Windows. CNTK is designed to have almost all functionalities written in C++. This not only makes it extremely fast, but also allows it to be used as a C++ API ready to be integrated with any applications. It also makes it very easy to add additional bindings to CNTK, such as Python, R, Java, etc.
+从一开始，我们就把模型的评估作为应用程序的重要部分，模型的训练也可以集成到如Office或Windows这样的应用程序中。从设计上，CNTk的几乎所有功能都由C++编写，速度非常快，而且C++编写的API可以集成到任何应用中。同时，也使得为CNTK添加额外的绑定变得更容易，比如Python、R、Java等等。
 
-It is also important to mention that CNTK’s Python API contains both low-level and high-level implementations. The high-level Python API is designed with a functional programming paradigm, and is highly compact and intuitive, especially when dealing with recurrent neural networks. This is in contrast with TensorFlow’s Python API, which is considered too low level by most people. TensorFlow users rely on third party high level APIs such as TensorFlow Slim and Sonnet to fill the gap, but the space is now fragmented due to too many choices.
+另外，CNTK的Python API既包含低级实现，又包含高级实现。高级的Python API包含功能范例，而且非常紧凑和直观，特别是在处理循环神经网络时。TensorFlow刚好相反，TensorFlow的Python API通常都很低级。TensorFlow主要依靠第三方提供的高级API来弥补这方面的空白，例如TensorFlow Slim和Sonnet。
 
-## Reason 4: Scalability
-Modern deep learning tasks could easily face billions of training examples. Being able to scale across multiple GPUs and multiple machines is a necessity. Toolkits such as TensorFlow can handle multiple GPUs on a single machine. However, when there is need to scale across multiple machines, it often becomes too complicated to fulfill.
+## 原因4：可伸缩性
 
-In contrast, distributed training has always been a strong selling point for CNTK. Changing a training script from single GPU to multiple GPUs across multiple machines is merely a few lines of change, as seen in many examples in the CNTK repository. Inside Microsoft, CNTK has been used to train tasks across hundreds of GPUs on many machines. We have invented some of the most innovative schemes for parallel training, such as 1-bit SGD (http://research.microsoft.com/apps/pubs/?id=230137) and Block-Momentum SGD (https://www.microsoft.com/en-us/research/publication/scalable-training-deep-learning-machines-incremental-block-training-intra-block-parallel-optimization-blockwise-model-update-filtering/). These algorithms helped improve hyper-parameter tuning significantly, leading to better models in shorter time, such as the conversational speech recognition breakthrough by Microsoft Research (https://arxiv.org/pdf/1610.05256.pdf).
+现代的深度学习任务通常要处理数十亿的训练样本，能够在多GPU和多机器上扩展变得很有必要。像TensorFlow这样的工具可以运行在单机器多GPU的系统上，当需要扩展到多机器上时，事情就会变的很复杂。
+
+相比之下，CNTK的分布式学习一直是个很强大的亮点。就像CNTK仓库中的实例一样，从单GPU迁移到多GPU多机器，只需修改训练脚本中的几行代码就可以了。在微软内部，CNTK已经应用于包含许多机器、数百个GPU的任务上了。我们发明了一些具有创新性的并行训练方案，例如[1位SGD](http://research.microsoft.com/apps/pubs/?id=230137)和[Block-Momentum SGD](https://www.microsoft.com/en-us/research/publication/scalable-training-deep-learning-machines-incremental-block-training-intra-block-parallel-optimization-blockwise-model-update-filtering/)。这些算法有助于超参数的调整，从而在更短的时间内实现更好的模型，例如微软研究院语音识别小组的[突破性研究](https://arxiv.org/pdf/1610.05256.pdf)。
 
 ## Reason 5: Inference
 TensorFlow has a very nice story about serving. It supports multiple versions of models, saving model optimized for serving, multiple meta graphs inside the same model to support serving on different devices, and plug-ins to support user customization. With their XLA AoT compilation, TF can transform the model into executable, which significantly reduces model sizes for mobile and embedded devices and latency.
